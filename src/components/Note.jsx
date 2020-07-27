@@ -1,5 +1,4 @@
 import React from "react";
-import { isPropertySignature } from "typescript";
 
 function Note(props) {
     return (
