@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-function CreateArea() {
+function CreateArea(props) {
   const [note, setNote] = useState({
     title: "",
     content: ""
   });
 
-  function handleChange(event){
-    const {name, value} = event.target;
+  function handleChange(event) {
+    const { name, value } = event.target;
 
     setNote(prevNote => {
       return {
@@ -15,6 +15,11 @@ function CreateArea() {
         [name]: value
       };
     });
+  }
+
+  function submitNote(event) {
+    props.onAdd(note);
+    event.preventDefault();
   }
 
   return (
@@ -33,7 +38,7 @@ function CreateArea() {
           rows="3"
           onChange={handleChange}
         />
-        <button>Add</button>
+        <button onClick={submitNote}>Add</button>
       </form>
     </div>
   );
