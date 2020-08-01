@@ -19,6 +19,10 @@ function CreateArea(props) {
 
   function submitNote(event) {
     props.onAdd(note);
+    setNote({
+      title: "",
+      content: ""
+    });
     event.preventDefault();
   }
 
@@ -33,10 +37,10 @@ function CreateArea(props) {
         />
         <textarea
           name="content"
+          onChange={handleChange}
           value={note.content}
           placeholder="Take a note..."
           rows="3"
-          onChange={handleChange}
         />
         <button onClick={submitNote}>Add</button>
       </form>
